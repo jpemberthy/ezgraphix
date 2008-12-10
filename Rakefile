@@ -5,7 +5,7 @@ require 'rake/gempackagetask'
 require 'spec/rake/spectask'
  
 GEM = "ezgraphix"
-GEM_VERSION = "0.2.0"
+GEM_VERSION = "1.0"
 SUMMARY = "EeasyGraphics for rails applications using a free and customizable chart's set."
 AUTHOR = "Juan Esteban Pemberthy"
 EMAIL = "jpemberthy@gmail.com"
