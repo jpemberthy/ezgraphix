@@ -32,45 +32,45 @@ module Ezgraphix
       
       options.each{|k,v| 
         when :y_name
-          parsed_hash['yAxisName'] = v
+          original_names['yAxisName'] = v
         when :caption
-          parsed_hash['caption'] = v
+          original_names['caption'] = v
         when :prefix
-          parsed_hash['numberPrefix'] = v
+          original_names['numberPrefix'] = v
         when :precision
-          parsed_hash['decimalPrecision'] = v
+          original_names['decimalPrecision'] = v
         when :div_line_precision
-          parsed_hash['divlinedecimalPrecision'] = v
+          original_names['divlinedecimalPrecision'] = v
         when :limits_precision
-          parsed_hash['limitsdecimalPrecision'] = v
+          original_names['limitsdecimalPrecision'] = v
         when :f_number
-          parsed_hash['formatNumber'] = v
+          original_names['formatNumber'] = v
         when :f_number_scale
-          parsed_hash['formatNumberScale'] = v
+          original_names['formatNumberScale'] = v
         when :rotate
-          parsed_hash['rotateNames']  = v  
+          original_names['rotateNames']  = v  
         when :background
-          parsed_hash['bgColor'] = v
+          original_names['bgColor'] = v
         when :line
-          parsed_hash['lineColor'] = v
+          original_names['lineColor'] = v
         when :names
-          parsed_hash['showNames'] = v
+          original_names['showNames'] = v
         when :values
-          parsed_hash['showValues'] = v
+          original_names['showValues'] = v
         when :limits
-          parsed_hash['showLimits'] = v
+          original_names['showLimits'] = v
         when :y_lines
-          parsed_hash['numdivlines'] = v
+          original_names['numdivlines'] = v
         when :p_y
-          parsed_hash['parentYAxis'] = v
+          original_names['parentYAxis'] = v
         when :dec_separator
-          parsed_hash['decimalSeparator'] = v
+          original_names['decimalSeparator'] = v
         when :left_label_name
-          parsed_hash['PYAxisName'] = v
+          original_names['PYAxisName'] = v
         when :right_label_name
-          parsed_hash['SYAxisName'] = v
+          original_names['SYAxisName'] = v
         when :x_name
-          parsed_hash['xAxisName'] = v
+          original_names['xAxisName'] = v
         end
         }
     end    
