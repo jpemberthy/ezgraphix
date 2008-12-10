@@ -6,7 +6,7 @@ require 'spec/rake/spectask'
  
 GEM = "ezgraphix"
 GEM_VERSION = "1.0"
-SUMMARY = "EeasyGraphics for rails applications using a free and customizable chart's set."
+SUMMARY = "EasyGraphics for rails applications using a free and customizable chart's set."
 AUTHOR = "Juan Esteban Pemberthy"
 EMAIL = "jpemberthy@gmail.com"
 HOMEPAGE = "http://github.com/jpemberthy/ezgraphix/tree/master"
