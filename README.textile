@@ -8,6 +8,7 @@ h2. EZGraphix
 A ruby gem to generate flash based graphics for rails applications using a free and customizable chart's set.
 
 Copyright (c) 2008 Juan Esteban Pemberthy, released under the MIT License.
+
 EzGraphix uses FusionCharts Free, It's license is specified in the FusionChartsFreeLICENSE file.
 
 Fork and feel free to contribute!
