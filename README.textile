@@ -1,3 +1,8 @@
+h2. Current State
+
+Working on it, gemspec file will be generated when reach a stable version.
+
+
 h2. EZGraphix
 
 A ruby gem to generate flash based graphics for rails applications using a free and customizable chart's set.
