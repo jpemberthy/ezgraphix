@@ -1,4 +1,5 @@
 require 'hpricot'
+require 'builder'
 
 module Ezgraphix
   module Helper
@@ -21,6 +22,11 @@ module Ezgraphix
       #data = CGI.escapeHTML(url_for(:controller => 'graphs', :action => action, :only_path => false, :start_date => "#{@start_date}", :end_date => "#{@end_date}", :graph_id => "#{g.id_name}"))
       h = Hpricot("<script type='text/javascript'> var activity = new FusionCharts('#{g.f_type}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); activity.setDataURL('#{data_url}'); activity.render('#{g.id_name}');</script>")
       h.to_html
+    end
+    
+    #builds the xml in order to feed and render the graph.
+    def graph_to_xml(g)
+      g_xml = Builder::XmlMarkup.new
     end
     
     #converts nice and cool option names in the original large names.
