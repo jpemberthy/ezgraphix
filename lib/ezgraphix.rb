@@ -19,6 +19,7 @@ unless defined? Ezgraphix
         @w = options[:w]
         @h = options[:y]
         @id_name = options[:id_name]
+        @data = Hash.new
       end
       
       #c_type chart type, :w width, :h heigth
@@ -28,6 +29,18 @@ unless defined? Ezgraphix
       
       def rand_color
         return COLORS[rand(Graph::COLORS.size - 1)]
+      end
+      
+      #builds the xml in order to feed and render the graph.
+      def to_xml
+        options = parse_options(self.render_options)
+        g_xml = Builder::XmlMarkup.new
+        g_xml.graph(options) do
+          self.data.each{ |k,v|
+            g_xml.set :value => v, :name => k, :color => g.rand_color 
+          }
+        end
+        g_xml
       end
       
   end
