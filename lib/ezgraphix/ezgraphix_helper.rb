@@ -20,7 +20,7 @@ module Ezgraphix
     def render_ezgraphix(g)
       action = get_action(g.c_type)
       xml_data = g.to_xml
-      h = Hpricot("<script type='text/javascript'> var activity = new FusionCharts('#{f_type(g.c_type)}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); activity.setDataURL(''); activity.render('#{g.id_name}');</script>")
+      h = Hpricot("<script type='text/javascript'> var ezChart = new FusionCharts('#{f_type(g.c_type)}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); ezChart.setDataURL(''); ezChart.render('#{g.id_name}');</script>")
       h.to_html
     end
     
