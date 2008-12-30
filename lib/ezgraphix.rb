@@ -16,7 +16,7 @@ unless defined? Ezgraphix
         @id_name = options[:id_name]
       end
       
-      #c_type chart type, :w with, :h heigth
+      #c_type chart type, :w width, :h heigth
       def defaults
         {:c_type => 'bar3d', :w => 300, :h => 300, :id_name => 'basic_graph'}  
       end

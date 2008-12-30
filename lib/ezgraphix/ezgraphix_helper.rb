@@ -3,28 +3,25 @@ require 'hpricot'
 module Ezgraphix
   module Helper
 
-    
     #At the moment just will return render_simple for simple graphs, 2 based variables.
     def get_style(g)
       case g.c_type
       when 'col3d'
-        return 'render_simple'
+        style = 'render_simple'
       when 'bar2d'
-        return 'render_simple'
+        style = 'render_simple'
       when 'col2d'
-        return 'render_simple'
+        style = 'render_simple'
       end
+      style
     end
     
-    #needs more work
     def render_ezgraphix(g)
       action = get_action(g.c_type)
-      #data_url = CGI.escapeHTML(url_for(:controller => 'graphs', :action => action, :only_path => false, :start_date => "#{@start_date}", :end_date => "#{@end_date}", :graph_id => "#{g.id_name}"))
+      #data = CGI.escapeHTML(url_for(:controller => 'graphs', :action => action, :only_path => false, :start_date => "#{@start_date}", :end_date => "#{@end_date}", :graph_id => "#{g.id_name}"))
       h = Hpricot("<script type='text/javascript'> var activity = new FusionCharts('#{g.f_type}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); activity.setDataURL('#{data_url}'); activity.render('#{g.id_name}');</script>")
       h.to_html
     end
-      
-
     
     #converts nice and cool option names in the original large names.
     def parse_options(options)
