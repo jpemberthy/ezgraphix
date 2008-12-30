@@ -20,8 +20,23 @@ module Ezgraphix
     def render_ezgraphix(g)
       action = get_action(g.c_type)
       xml_data = g.to_xml
-      h = Hpricot("<script type='text/javascript'> var activity = new FusionCharts('#{g.f_type}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); activity.setDataURL(''); activity.render('#{g.id_name}');</script>")
+      h = Hpricot("<script type='text/javascript'> var activity = new FusionCharts('#{f_type(g.c_type)}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); activity.setDataURL(''); activity.render('#{g.id_name}');</script>")
       h.to_html
+    end
+    
+    #returns the charts filename and location.
+    def f_type(c_type)
+      type = ''
+      case c_type
+      when 'col3d'
+        type = '/FusionCharts/FCF_Column3D.swf'
+      when 'bar2d'
+        type = '/FusionCharts/FCF_Bar2D.swf'
+      when 'barline3d'
+        type = '/FusionCharts/FCF_MSColumn3DLineDY.swf'
+      when 'col2d'
+        type = '/FusionCharts/FCF_Column2D.swf'
+      end
     end
         
     #converts nice and cool option names in the original large names.
