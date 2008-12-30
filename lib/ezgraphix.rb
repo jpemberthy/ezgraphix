@@ -2,8 +2,6 @@ unless defined? Ezgraphix
   require 'builder'
   module Ezgraphix
     
-    #Graphic sounds good but maybe a lot of ppl will be already using that name for a class
-    #will change it!
     class Graphic
       
       attr_accessor :c_type, :w, :h, :id_name, :render_options
