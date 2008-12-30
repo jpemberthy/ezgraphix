@@ -1,5 +1,4 @@
 require 'hpricot'
-require 'builder'
 
 module Ezgraphix
   module Helper
