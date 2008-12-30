@@ -2,6 +2,11 @@ h2. Current State
 
 Working on it, gemspec file will be generated when reach a stable version.
 
+h3. Installation Notes
+
+After the installation include the FusionCharts.js in each layout that will render ezgraphix:
+
+<%= javascript_include_tag "FusionCharts" %>
 
 h2. EZGraphix
 
