@@ -1,6 +1,6 @@
 unless defined? Ezgraphix
-  require 'builder'
   module Ezgraphix
+    require 'builder'
     
     class Graphic
       
@@ -12,7 +12,7 @@ unless defined? Ezgraphix
                 '66FF33', '000000', 'FFFF00', '669966', 'FF3300']
       
       def initialize(options={})
-        @render_options = options.merge!(self.defaults)
+        @render_options = options.merge!(defaults)
         @c_type = options[:c_type]
         @w = options[:w]
         @h = options[:y]
@@ -20,11 +20,10 @@ unless defined? Ezgraphix
         @data = Hash.new
       end
       
-      #c_type chart type, :w width, :h heigth
       def defaults
-        {:c_type => 'bar3d', :w => 300, :h => 300, :id_name => 'basic_graph'}  
+        {:c_type => 'bar3d', :w => 300, :h => 300, :id_name => 'basic_graph'}
       end
-      
+
       def rand_color
         return COLORS[rand(Graph::COLORS.size - 1)]
       end
@@ -41,5 +40,6 @@ unless defined? Ezgraphix
         g_xml
       end
       
-  end
+  end  
+ end
 end

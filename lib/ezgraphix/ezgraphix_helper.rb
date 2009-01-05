@@ -1,8 +1,7 @@
-require 'hpricot'
-
 module Ezgraphix
   module Helper
-
+    require 'hpricot'
+    
     #At the moment just will return render_simple for simple graphs, 2 based variables.
     def get_style(g)
       case g.c_type
