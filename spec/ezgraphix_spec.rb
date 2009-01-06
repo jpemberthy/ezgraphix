@@ -1,7 +1,7 @@
 #using rspec 1.1.11
 require 'rubygems'
 require 'spec'
-require File.dirname(__FILE__) + '/../lib/ezgraphix/ezgraphix'
+require File.dirname(__FILE__) + '/../lib/ezgraphix'
 require File.dirname(__FILE__) + '/../lib/ezgraphix/ezgraphix_helper'
 
 include Ezgraphix

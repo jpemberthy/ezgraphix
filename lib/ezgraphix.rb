@@ -1,6 +1,6 @@
 unless defined? Ezgraphix
   module Ezgraphix
-    require File.dirname(__FILE__) + '/ezgraphix_helper'
+    require File.dirname(__FILE__) + '/ezgraphix/ezgraphix_helper'
     require 'builder'
     include Helper
     
