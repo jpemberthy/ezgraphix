@@ -2,8 +2,10 @@
 require 'rubygems'
 require 'spec'
 require File.dirname(__FILE__) + '/../lib/ezgraphix/ezgraphix'
+require File.dirname(__FILE__) + '/../lib/ezgraphix/ezgraphix_helper'
 
 include Ezgraphix
+include Helper
 
 describe Graphic do
   
@@ -55,7 +57,25 @@ describe Graphic do
     @g.data.values_at(:ruby, :perl, :smalltalk).should == [1,2,3]
   end
   
-  it "should generate xml" do
-    @g.to_xml.should == "foo"
+  before do
+    @g.render_options = {:y_name => 'score'}
   end
+  
+  it "should update render options" do
+     @g.render_options.values_at(:c_type, :w, :h, :div_name, :caption, :y_name).should == ['bar2d', 200, 300, 'basic_graph', 'ezgraphix spec', 'score']
+  end
+  
+  it "should parse render options" do
+    parsed = parse_options(@g.render_options)
+    parsed.values_at('caption', 'yAxisName').should == ['ezgraphix spec', 'score']
+  end
+  
+  it "should have original filename/location" do
+    f_type(@g.c_type).should == '/FusionCharts/FCF_Bar2D.swf'
+  end
+  
+  it "should have style" do
+    get_style(@g).should == 'render_simple'
+  end
+  
 end

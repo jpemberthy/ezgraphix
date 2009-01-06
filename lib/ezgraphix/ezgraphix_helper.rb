@@ -16,9 +16,9 @@ module Ezgraphix
     end
     
     def render_ezgraphix(g)
-      action = get_action(g.c_type)
+      style = get_style(g)
       xml_data = g.to_xml
-      h = Hpricot("<script type='text/javascript'> var ezChart = new FusionCharts('#{f_type(g.c_type)}', '#{g.id_name}', '#{g.w}', '#{g.h}','0','0'); ezChart.setDataURL(''); ezChart.render('#{g.id_name}');</script>")
+      h = Hpricot("<script type='text/javascript'> var ezChart = new FusionCharts('#{f_type(g.c_type)}', '#{g.div_name}', '#{g.w}', '#{g.h}','0','0'); ezChart.setDataURL('#{g.to_xml}'); ezChart.render('#{g.div_name}');</script>")
       h.to_html
     end
     
@@ -41,7 +41,8 @@ module Ezgraphix
     def parse_options(options)
       original_names = Hash.new
       
-      options.each{|k,v| 
+      options.each{|k,v|
+        case k 
         when :y_name
           original_names['yAxisName'] = v
         when :caption
@@ -84,6 +85,7 @@ module Ezgraphix
           original_names['xAxisName'] = v
         end
         }
+      original_names
     end    
     
   end

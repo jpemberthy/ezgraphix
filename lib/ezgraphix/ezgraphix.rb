@@ -2,8 +2,8 @@ unless defined? Ezgraphix
   module Ezgraphix
     require File.dirname(__FILE__) + '/ezgraphix_helper'
     require 'builder'
-    
     include Helper
+    
     class Graphic
       
       attr_accessor :c_type, :w, :h, :div_name, :render_options, :data
@@ -31,10 +31,15 @@ unless defined? Ezgraphix
         g_xml = Builder::XmlMarkup.new
         g_xml.graph(options) do
           self.data.each{ |k,v|
-            g_xml.set :value => v, :name => k, :color => g.rand_color 
+            g_xml.set :value => v, :name => k, :color => self.rand_color 
           }
         end
         g_xml
+      end
+      
+      #receives all the neccesary data in order to render the graphic
+      def render_options=(options)
+        @render_options = render_options.merge(options)
       end
       
      #char type, ['col3d', 'bar2d', 'col2d']
