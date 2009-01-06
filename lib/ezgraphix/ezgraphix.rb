@@ -4,28 +4,23 @@ unless defined? Ezgraphix
     
     class Graphic
       
-      attr_accessor :c_type, :w, :h, :id_name, :render_options
+      attr_accessor :c_type, :w, :h, :div_name, :render_options
       
-      COLORS = ['AFD8F8', 'F6BD0F', '8BBA00', 'FF8E46', '008E8E',
-                'D64646', '8E468E', '588526', 'B3A00', 'B2FF66',
+      COLORS = ['AFD8f6', '8E468E', '588526', 'B3A00', 'B2FF66',
                 'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
                 '66FF33', '000000', 'FFFF00', '669966', 'FF3300']
       
       def initialize(options={})
-        @render_options = options.merge!(defaults)
-        @c_type = options[:c_type]
-        @w = options[:w]
-        @h = options[:y]
-        @id_name = options[:id_name]
+        @render_options = defaults.merge!(options)
         @data = Hash.new
       end
       
       def defaults
-        {:c_type => 'bar3d', :w => 300, :h => 300, :id_name => 'basic_graph'}
+        {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'basic_graph'}
       end
-
+         
       def rand_color
-        return COLORS[rand(Graph::COLORS.size - 1)]
+        COLORS[rand(Graphic::COLORS.size - 1)]
       end
       
       #builds the xml in order to feed and render the graph.
@@ -38,6 +33,26 @@ unless defined? Ezgraphix
           }
         end
         g_xml
+      end
+      
+     #char type, ['col3d', 'bar2d', 'col2d']
+      def c_type
+        self.render_options[:c_type]
+      end
+
+      #width. default: 300px
+      def w
+        self.render_options[:w]
+      end
+
+      #height. default: 300px
+      def h  
+        self.render_options[:h]
+      end
+
+      #div_name for the graphix tag, default: 'basic_graphic'
+      def div_name
+        self.render_options[:div_name]
       end
       
   end  
