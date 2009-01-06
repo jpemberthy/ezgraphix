@@ -1,12 +1,14 @@
 unless defined? Ezgraphix
   module Ezgraphix
+    require File.dirname(__FILE__) + '/ezgraphix_helper'
     require 'builder'
     
+    include Helper
     class Graphic
       
-      attr_accessor :c_type, :w, :h, :div_name, :render_options
+      attr_accessor :c_type, :w, :h, :div_name, :render_options, :data
       
-      COLORS = ['AFD8f6', '8E468E', '588526', 'B3A00', 'B2FF66',
+      COLORS = ['AFD8f6', '8E468E', '588526', 'B3A000', 'B2FF66',
                 'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
                 '66FF33', '000000', 'FFFF00', '669966', 'FF3300']
       

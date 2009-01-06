@@ -45,7 +45,17 @@ describe Graphic do
   it "should have valid colors" do
     @g.rand_color.should be_instance_of(String)
     @g.rand_color.length.should == 6
-    
   end
   
+  before do
+    @g.data = {:ruby => 1, :perl => 2, :smalltalk => 3}
+  end
+  
+  it "should have valid data" do
+    @g.data.values_at(:ruby, :perl, :smalltalk).should == [1,2,3]
+  end
+  
+  it "should generate xml" do
+    @g.to_xml.should == "foo"
+  end
 end
