@@ -47,7 +47,9 @@ defaults are: {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'basic_gra
 At the moment, you can render the following graphics:
 
 Column 3D => :c_type => 'col3d'
+
 Bar 2D => :c_type => 'bar2d'
+
 Column 2D => :c_type => 'col2d'
 
 <b>2.</b> Anytime you want accessing the render_options attributes.
@@ -56,7 +58,7 @@ Column 2D => :c_type => 'col2d'
 
 <b> In your view. </b>
 
-Add the following line whenever you want to render the graphic.
+Add the following line wherever you want to render the graphic.
 
 <%= render_ezgraphix @g %>
 
