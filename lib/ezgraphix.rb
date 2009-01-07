@@ -29,12 +29,12 @@ unless defined? Ezgraphix
       def to_xml
         options = parse_options(self.render_options)
         g_xml = Builder::XmlMarkup.new
-        g_xml.graph(options) do
+        escaped_xml = g_xml.graph(options) do
           self.data.each{ |k,v|
             g_xml.set :value => v, :name => k, :color => self.rand_color 
           }
         end
-        g_xml
+        escaped_xml.to_xs
       end
       
       #receives all the neccesary data in order to render the graphic
