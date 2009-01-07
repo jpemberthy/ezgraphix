@@ -4,8 +4,8 @@ require 'spec'
 require File.dirname(__FILE__) + '/../lib/ezgraphix'
 require File.dirname(__FILE__) + '/../lib/ezgraphix/ezgraphix_helper'
 
+include EzgraphixHelper
 include Ezgraphix
-include Helper
 
 describe Graphic do
   
@@ -76,6 +76,10 @@ describe Graphic do
   
   it "should have style" do
     get_style(@g).should == 'render_simple'
+  end
+  
+  it "should have xml" do
+    @g.to_xml.should be_instance_of(String)
   end
   
 end
