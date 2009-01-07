@@ -86,5 +86,9 @@ module EzgraphixHelper
       }
     original_names
   end    
-  
-  end
+end
+
+#extending ActionView to support Ezgraphix
+module ActionView
+  include EzgraphixHelper
+end

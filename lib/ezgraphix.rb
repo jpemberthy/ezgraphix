@@ -2,9 +2,9 @@ unless defined? Ezgraphix
   module Ezgraphix
     require File.dirname(__FILE__) + '/ezgraphix/ezgraphix_helper'
     require 'builder'
-    include EzgraphixHelper
     
     class Graphic
+      include EzgraphixHelper
       
       attr_accessor :c_type, :w, :h, :div_name, :render_options, :data
       
