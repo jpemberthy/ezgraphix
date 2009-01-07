@@ -28,7 +28,7 @@ h3. Usage
 
 (this is the basic usage, I will create a blog entry with a more detailed information also rdoc will be published)
 
-h4.In your Controller:
+<b> In your Controller: </b>
 
 def index
 
@@ -37,9 +37,9 @@ def index
 
 end
 
-There are 2 ways passing render options:
+There are 2 ways <b> passing render options: </b>
 
-1) when the Graphic object is created, you can define it also as: 
+<b>1.</b> when the Graphic object is created, you can define it also as: 
 
 @g = Ezgraphix::Graphic.new(:w => 200, :h => 300, :c_type => 'bar3d', :div_name => 'my_chart_tag_name')
 
@@ -50,19 +50,19 @@ Column 3D => :c_type => 'col3d'
 Bar 2D => :c_type => 'bar2d'
 Column 2D => :c_type => 'col2d'
 
-2) Anytime you want accessing the render_options attributes.
+<b>2.</b> Anytime you want accessing the render_options attributes.
 
 @g.render_options(:caption => 'cool languages')
 
-h4. In your view.
+<b> In your view. </b>
 
 Add the following line whenever you want to render the graphic.
 
 <%= render_ezgraphix @g %>
 
-h4. note.
+<b> note.</b>
 
-Full set of render_options will be specified in the rdoc, and more chart's support will be included soon!.
+Full set of render_options will be specified in the rdoc, and </b>more chart's support will be included soon!.</b>
 
 h2. EZGraphix
 
