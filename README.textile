@@ -4,9 +4,65 @@ Working on it, gemspec file will be generated when reach a stable version.
 
 h3. Installation Notes
 
+h4. As a plugin.
+
+Install the plugin:
+
+script/plugin install git://github.com/jpemberthy/ezgraphix.git
+
+Run the tasks: (it will move the necessary files to use the plugin)
+
+rake ezgrahpix:setup (from your project's root.)
+
 After the installation include the FusionCharts.js in each layout that will render ezgraphix:
 
 <%= javascript_include_tag "FusionCharts" %>
+
+that's it!.
+
+h4. As a Gem.
+
+Will add gem support soon!
+
+h3. Usage
+
+(this is the basic usage, I will create a blog entry with a more detailed information also rdoc will be published)
+
+h4.In your Controller:
+
+def index
+
+  @g = Ezgraphix::Graphic.new
+  @g.data = {:ruby => 1, :perl => 2, :smalltalk => 3}
+
+end
+
+There are 2 ways passing render options:
+
+1) when the Graphic object is created, you can define it also as: 
+
+@g = Ezgraphix::Graphic.new(:w => 200, :h => 300, :c_type => 'bar3d', :div_name => 'my_chart_tag_name')
+
+defaults are: {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'basic_graph'}
+At the moment, you can render the following graphics:
+
+Column 3D => :c_type => 'col3d'
+Bar 2D => :c_type => 'bar2d'
+Column 2D => :c_type => 'col2d'
+
+2) Anytime you want accessing the render_options attributes.
+
+@g.render_options(:caption => 'cool languages')
+
+h4. In your view.
+
+Add the following line whenever you want to render the graphic.
+
+<%= render_ezgraphix @g %>
+
+h4. note.
+
+Full set of render_options will be specified in the rdoc, and more chart's support will be included soon!.
 
 h2. EZGraphix
 
