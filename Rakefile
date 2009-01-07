@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake'
 require 'echoe'
+require 'spec/rake/spectask'
  
 GEM = "ezgraphix"
 GEM_VERSION = "1.0"
@@ -17,5 +18,11 @@ Echoe.new(GEM, GEM_VERSION) do |p|
   p.ignore_pattern = ["tmp/*", "script/*"]
   p.development_dependencies = []
 end
+
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_opts = %w(-fs --color)
+end
+
 
 #Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext } 
