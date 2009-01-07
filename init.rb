@@ -1,2 +1,2 @@
 require 'ezgraphix'
-ActiveRecord::Base.send :include, EzgraphixHelper
+ActionView::Base.send :include, EzgraphixHelper
