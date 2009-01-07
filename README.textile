@@ -1,20 +1,22 @@
 h2. Current State
 
-Working on it, gemspec file will be generated when reach a stable version.
+Working as a plugin.
+
+Gem support will be included soon.
 
 h3. Installation Notes
 
 h4. As a plugin.
 
-Install the plugin:
+<b>Install the plugin:</b>
 
 script/plugin install git://github.com/jpemberthy/ezgraphix.git
 
-Run the tasks: (it will move the necessary files to use the plugin)
+<b>Run the tasks:</b> (it will move the necessary files to use the plugin)
 
 rake ezgrahpix:setup (from your project's root.)
 
-After the installation include the FusionCharts.js in each layout that will render ezgraphix:
+After the installation <b>include the FusionCharts.js</b> in each layout that will render ezgraphix:
 
 <%= javascript_include_tag "FusionCharts" %>
 
@@ -30,6 +32,8 @@ h3. Usage
 
 <b> In your Controller: </b>
 
+<pre>
+
 def index
 
   @g = Ezgraphix::Graphic.new
@@ -37,9 +41,11 @@ def index
 
 end
 
+</pre>
+
 There are 2 ways <b> passing render options: </b>
 
-<b>1.</b> when the Graphic object is created, you can define it also as: 
+<b>1.</b> When the Graphic object is created, you can define it also as: 
 
 @g = Ezgraphix::Graphic.new(:w => 200, :h => 300, :c_type => 'bar3d', :div_name => 'my_chart_tag_name')
 
@@ -52,9 +58,9 @@ Bar 2D => :c_type => 'bar2d'
 
 Column 2D => :c_type => 'col2d'
 
-<b>2.</b> Anytime you want accessing the render_options attributes.
+<b>2.</b> Anytime you want, by accessing the render_options attribute.
 
-@g.render_options(:caption => 'cool languages')
+@g.render_options(:caption => 'cool languages', :w => 400)
 
 <b> In your view. </b>
 
