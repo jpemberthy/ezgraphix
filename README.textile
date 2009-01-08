@@ -67,9 +67,13 @@ Add the following line wherever you want to render the graphic.
 
 <pre><%= render_ezgraphix @g %></pre>
 
+<b> Tests </b>
+
+<pre> rake spec		#run from the plugin's root </pre>
+
 <b> Note.</b>
 
-Full set of render_options will be specified in the rdoc, and </b>more chart's support will be included soon!.</b>
+Full set of render_options will be specified in the rdoc, and <b>more chart's support will be included soon!.</b>
 
 h3. EZGraphix
 
