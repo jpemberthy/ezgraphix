@@ -9,7 +9,7 @@
       puts "Charts copied."
     end
     
-    task :cp_js
+    task :cp_javascript do
       FileUtils.cp_r("#{RAILS_ROOT}/vendor/plugins/ezgraphix/public/javascripts/FusionCharts.js", "#{RAILS_ROOT}/public/javascripts/")
       puts "FusionCharts.js copied"
     end
