@@ -1,12 +1,12 @@
-h1. EZGraphix
+h2. EZGraphix
 
-h2. Current State
+h3. Current State
 
 Working as a plugin.
 
 Gem support will be included soon.
 
-h2. Installation Notes
+h3. Installation Notes
 
 
 h4. As a plugin.
@@ -71,7 +71,7 @@ Add the following line wherever you want to render the graphic.
 
 Full set of render_options will be specified in the rdoc, and </b>more chart's support will be included soon!.</b>
 
-h2. EZGraphix
+h3. EZGraphix
 
 A Ruby gem to generate flash based graphics for rails applications using a free and customizable chart's set.
 
@@ -81,7 +81,7 @@ EzGraphix uses FusionCharts Free, It's license is specified in the FusionChartsF
 
 Fork and feel free to contribute!
 
-h2. LICENSE:
+h3. LICENSE:
 
 (The MIT License)
 
