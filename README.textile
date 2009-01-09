@@ -59,7 +59,7 @@ Bar 2D    => :c_type => 'bar2d'
 
 <b>2.</b> Anytime you want, by accessing the render_options attribute.
 
-<pre>@g.render_options(:caption => 'cool languages', :w => 400) </pre>
+<pre>@g.render_options(:caption => 'cool languages', :w => 400)  #Merges new options with the last configuration.</pre>
 
 <b> In your view. </b>
 
