@@ -38,8 +38,9 @@ unless defined? Ezgraphix
       end
       
       #receives all the neccesary data in order to render the graphic
-      def render_options=(options)
-        @render_options = render_options.merge(options)
+      def render_options(options={})
+        @render_options.merge!(options)
+        @render_options
       end
       
      #char type, ['col3d', 'bar2d', 'col2d']

@@ -58,7 +58,7 @@ describe Graphic do
   end
   
   before do
-    @g.render_options = {:y_name => 'score'}
+    @g.render_options(:y_name => 'score')
   end
   
   it "should update render options" do
