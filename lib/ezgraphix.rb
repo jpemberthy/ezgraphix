@@ -6,7 +6,7 @@ unless defined? Ezgraphix
     class Graphic
       include EzgraphixHelper
       
-      attr_accessor :c_type, :w, :h, :div_name, :render_options, :data
+      attr_accessor :data
       
       COLORS = ['AFD8f6', '8E468E', '588526', 'B3A000', 'B2FF66',
                 'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
