@@ -1,7 +1,6 @@
 module EzgraphixHelper
   require 'hpricot'
-  
-  #At the moment just will return render_simple for simple graphs, 2 based variables.
+
   def get_style(g)
     case g.c_type
     when 'col3d'
@@ -14,6 +13,7 @@ module EzgraphixHelper
     style
   end
   
+  #method used in ActionView::Base to render graphics.
   def render_ezgraphix(g)
     style = get_style(g)
     xml_data = g.to_xml
@@ -21,7 +21,6 @@ module EzgraphixHelper
     h.to_html
   end
   
-  #returns the charts filename and location.
   def f_type(c_type)
     type = ''
     case c_type
@@ -36,7 +35,6 @@ module EzgraphixHelper
     end
   end
       
-  #converts nice and cool option names in the original large names.
   def parse_options(options)
     original_names = Hash.new
     
