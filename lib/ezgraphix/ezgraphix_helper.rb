@@ -74,8 +74,10 @@ module EzgraphixHelper
         original_names['numdivlines'] = v
       when :p_y
         original_names['parentYAxis'] = v
-      when :separator
+      when :d_separator
         original_names['decimalSeparator'] = v
+      when :t_separator
+        original_name['thousandSeparator'] = v
       when :left_label_name
         original_names['PYAxisName'] = v
       when :right_label_name
