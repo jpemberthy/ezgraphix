@@ -111,7 +111,6 @@ unless defined? Ezgraphix
       #
       def render_options(options={})
         @render_options.merge!(options)
-        @render_options
       end
       
      #Returns the Graphic's type.
