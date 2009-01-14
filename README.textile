@@ -31,7 +31,7 @@ Will add gem support soon!
 
 h3. Usage
 
-(this is the basic usage, I will create a blog entry with a more detailed information also rdoc will be published)
+(this is the basic usage, I will create a blog entry with a more detailed information)
 
 <b> In your Controller: </b>
 
@@ -75,7 +75,11 @@ Add the following line wherever you want to render the graphic.
 
 <b> Note.</b>
 
-Full set of render_options will be specified in the rdoc, and <b>more chart's support will be included soon!.</b>
+Full set of render_options are specified in the rdoc, and <b>more chart's support will be included soon!.</b>
+
+h3. Documentation
+
+"API Documentation (generated with RDoc)":http://www.textism.com
 
 h3. EZGraphix
 
