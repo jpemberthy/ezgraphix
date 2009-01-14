@@ -48,13 +48,15 @@ There are 2 ways to <b> pass render options: </b>
 
 <pre>@g = Ezgraphix::Graphic.new(:w => 200, :h => 300, :c_type => 'bar3d', :div_name => 'my_chart_tag_name')</pre>
 
-The defaults are: <pre>{:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'basic_graph'}</pre>
+The defaults are: <pre>{:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'ez_graphic'}</pre>
 At the moment, you can render the following graphics:
 
 <pre>
 Column 2D => :c_type => 'col2d'
 Column 3D => :c_type => 'col3d'
 Bar 2D    => :c_type => 'bar2d'
+Pie 2D	  => :c_type => 'pie2d'
+Pie 3D	  => :c_type => 'pie3d'
 </pre>
 
 <b>2.</b> Anytime you want, by accessing the render_options attribute.
