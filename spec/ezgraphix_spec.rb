@@ -22,7 +22,7 @@ describe Graphic do
   end
   
   it "should have right defaults" do
-    @g.defaults.values_at(:c_type, :w, :h, :div_name).should == ['col3d', 300, 300, 'basic_graph']
+    @g.defaults.values_at(:c_type, :w, :h, :div_name).should == ['col3d', 300, 300, 'ez_graphic']
   end
   
   before do
@@ -30,14 +30,14 @@ describe Graphic do
   end
   
   it "should merge defaults and options" do
-    @g.render_options.values_at(:c_type, :w, :h, :div_name, :caption).should == ['bar2d', 200, 300, 'basic_graph', 'ezgraphix spec']
+    @g.render_options.values_at(:c_type, :w, :h, :div_name, :caption).should == ['bar2d', 200, 300, 'ez_graphic', 'ezgraphix spec']
   end
   
   it "should have chart type, width, height and div_name" do
     @g.c_type.should == 'bar2d'
     @g.w.should == 200
     @g.h.should == 300
-    @g.div_name.should == 'basic_graph'
+    @g.div_name.should == 'ez_graphic'
   end  
   
   it "should have colors"  do
@@ -62,7 +62,7 @@ describe Graphic do
   end
   
   it "should update render options" do
-     @g.render_options.values_at(:c_type, :w, :h, :div_name, :caption, :y_name).should == ['bar2d', 200, 300, 'basic_graph', 'ezgraphix spec', 'score']
+     @g.render_options.values_at(:c_type, :w, :h, :div_name, :caption, :y_name).should == ['bar2d', 200, 300, 'ez_graphic', 'ezgraphix spec', 'score']
   end
   
   it "should parse render options" do

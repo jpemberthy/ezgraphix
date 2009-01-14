@@ -28,10 +28,10 @@ unless defined? Ezgraphix
    #                                # @g = Ezgraphix::Graphic.new(:div_name => 'my_graph', :w => 400)
    #
    #   @g.defaults
-   #   => {:c_type=>'col3d', :div_name=>'basic_graph', :w=>300, :h=>300}
+   #   => {:c_type=>'col3d', :div_name=>'ez_graphic', :w=>300, :h=>300}
    #   
    #   @g.render_options #equals to defaults if not options were passed to the initializer.
-   #   => {:c_type=>'col3d', :div_name=>'basic_graph', :w=>300, :h=>300}
+   #   => {:c_type=>'col3d', :div_name=>'ez_graphic', :w=>300, :h=>300}
    #
    # It's always a good idea to change the div_name if your planning to render more
    # than one Graphic in the same page, this makes the graphic unique.
@@ -75,7 +75,7 @@ unless defined? Ezgraphix
       
       #Returns defaults render options.
       def defaults
-        {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'basic_graph'}
+        {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'ez_graphic'}
       end
 
       #Receives a Hash containing a set of render options that will be merged with the current configuration.
@@ -86,7 +86,7 @@ unless defined? Ezgraphix
       #  'col2D' for Column 2D
       #  'pie2D' for Pie 2D
       #  'pie3D' for Pie 3D
-      #* :div_name -- Div's tag name for the graphic, would be unique, default: 'basic_graph'
+      #* :div_name -- Div's tag name for the graphic, would be unique, default: 'ez_graphic'
       #* :w -- Width in pixels, default: 300
       #* :h -- Height in pixels, default: 300
       #* :caption -- Graphic's caption, default: ''
