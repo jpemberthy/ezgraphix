@@ -46,6 +46,8 @@ module EzgraphixHelper
         original_names['yAxisName'] = v
       when :caption
         original_names['caption'] = v
+      when :subcaption
+        original_names['subCaptions'] = v
       when :prefix
         original_names['numberPrefix'] = v
       when :precision
