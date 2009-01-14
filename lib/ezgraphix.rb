@@ -5,7 +5,10 @@
 # A ruby gem to generate flash based graphics 
 # for rails applications using a free and customizable chart's set.(also acts as a rails/plugin)
 #
-# == contact
+# == Installation
+# Instructions are listed in the respository's README[http://github.com/jpemberthy/ezgraphix/tree/master/README.textile]  
+#
+# == Contact
 #
 # Author::    Juan E Pemberthy
 # Mail:: jpemberthy@gmail.com
