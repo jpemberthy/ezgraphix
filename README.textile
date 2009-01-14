@@ -79,7 +79,7 @@ Full set of render_options are specified in the rdoc, and <b>more chart's suppor
 
 h3. Documentation
 
-"API Documentation (generated with RDoc)":http://www.textism.com
+"API Documentation (generated with RDoc)":http://ezgraphix.rubyforge.org
 
 h3. EZGraphix
 
