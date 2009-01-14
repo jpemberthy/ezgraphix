@@ -57,7 +57,7 @@ unless defined? Ezgraphix
       
       # Hash containing all the render options. basic options are:
       # * <tt> :c_type</tt> -- Chart type to render.
-      # * <tt> :div_nam</tt> -- Name for the graphic, should be unique.
+      # * <tt> :div_name</tt> -- Name for the graphic, should be unique.
       # * <tt> :w </tt> -- Width in pixels.
       # * <tt> :h </tt> -- Height in pixels.
       # Full list of options are listed below render_options
