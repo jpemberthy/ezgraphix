@@ -84,6 +84,8 @@ unless defined? Ezgraphix
       #* :c_type -- Chart type to render, default: 'col3d' for Column 3D, options are:
       #  'bar2D' for Bar 2D
       #  'col2D' for Column 2D
+      #  'pie2D' for Pie 2D
+      #  'pie3D' for Pie 3D
       #* :div_name -- Div's tag name for the graphic, would be unique, default: 'basic_graph'
       #* :w -- Width in pixels, default: 300
       #* :h -- Height in pixels, default: 300

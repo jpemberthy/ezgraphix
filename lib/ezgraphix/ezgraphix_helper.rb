@@ -32,6 +32,10 @@ module EzgraphixHelper
       type = '/FusionCharts/FCF_MSColumn3DLineDY.swf'
     when 'col2d'
       type = '/FusionCharts/FCF_Column2D.swf'
+    when 'pie2d'
+      type = '/FusionCharts/FCF_Pie2D.swf'
+    when 'pie3d'
+      type = '/FusionCharts/FCF_Pie3D.swf'
     end
   end
       
