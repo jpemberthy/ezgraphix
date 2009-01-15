@@ -55,7 +55,7 @@ unless defined? Ezgraphix
     class Graphic
       include EzgraphixHelper
       
-      #Hash containing the names and labels to render.
+      #Hash containing the names and values to render.
       attr_accessor :data
       
       # Hash containing all the render options. basic options are:
