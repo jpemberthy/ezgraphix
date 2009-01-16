@@ -92,6 +92,8 @@ unless defined? Ezgraphix
       #     :c_type => "bar2d" #Bar2D
       #     :c_type => "pie2d" #Pie2D
       #     :c_type => "pie3D" #Pie3D
+      #     :c_type => "line"  #Line
+      #     :c_type => "doug2d" #Doughnut2D
       # * <tt>:div_name</tt></tt> -- Name for the graphic, would be unique, default: "ez_graphic"
       # * <tt>:w</tt></tt> -- Width in pixels, default: 300
       # * <tt>:h</tt></tt> -- Height in pixels, default: 300

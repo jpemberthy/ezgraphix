@@ -57,6 +57,8 @@ Column 3D => :c_type => 'col3d'
 Bar 2D    => :c_type => 'bar2d'
 Pie 2D	  => :c_type => 'pie2d'
 Pie 3D	  => :c_type => 'pie3d'
+Line	  => :c_type => 'line'
+Doughnut 2D  => :c_type => 'doug2d'
 </pre>
 
 <b>2.</b> Anytime you want, by accessing the render_options attribute.

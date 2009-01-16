@@ -36,6 +36,10 @@ module EzgraphixHelper
       type = '/FusionCharts/FCF_Pie2D.swf'
     when 'pie3d'
       type = '/FusionCharts/FCF_Pie3D.swf'
+    when 'line'
+      type = '/FusionCharts/FCF_Line.swf'
+    when 'doug2d'
+      type = '/FusionCharts/FCF_Doughnut2D.swf'
     end
   end
       
