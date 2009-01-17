@@ -68,7 +68,9 @@ unless defined? Ezgraphix
       
       COLORS = ['AFD8f6', '8E468E', '588526', 'B3A000', 'B2FF66',
                 'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
-                '66FF33', '000000', 'FFFF00', '669966', 'FF3300']
+                '66FF33', '000000', 'FFFF00', '669966', 'FF3300',
+                'F19CBB', '9966CC', '00FFFF', '4B5320', '007FFF',
+                '0000FF', '66FF00', 'CD7F32', '964B00', 'CC5500']
                 
       #Creates a new Graphic with the given _options_, if no _options_ are specified,
       #the new Graphic will be initalized with the Graphic#defaults options.
