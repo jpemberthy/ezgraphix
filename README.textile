@@ -1,15 +1,10 @@
 h2. EZGraphix
 
-h3. Current State
+h3. Documentation
 
-Working as a plugin.
-
-Gem support will be included soon.
+"API Documentation (generated with RDoc)":http://ezgraphix.rubyforge.org
 
 h3. Installation Notes
-
-
-h4. As a plugin.
 
 <b>Install the plugin:</b>
 
@@ -25,13 +20,9 @@ After the installation <b>include the FusionCharts.js</b> in each layout that wi
 
 and that's it!.
 
-h4. As a Gem.
-
-Will add gem support soon!
-
 h3. Usage
 
-(this is the basic usage, I will create a blog entry with a more detailed information)
+(this is the basic usage, I will create a blog entry with a more detailed information and an online demo.)
 
 <b> In your Controller: </b>
 
@@ -78,10 +69,6 @@ Add the following line wherever you want to render the graphic.
 <b> Note.</b>
 
 Full set of render_options are specified in the rdoc, and <b>more chart's support will be included soon!.</b>
-
-h3. Documentation
-
-"API Documentation (generated with RDoc)":http://ezgraphix.rubyforge.org
 
 h3. EZGraphix
 
