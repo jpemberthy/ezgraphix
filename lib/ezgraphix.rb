@@ -2,8 +2,8 @@
 # This file contains the Ezgraphix module, and the Ezgraphix::Graphic class.
 #
 # == Summary
-# A ruby gem to generate flash based graphics 
-# for rails applications using a free and customizable chart's set.(also acts as a rails/plugin)
+# A rails plugin to generate flash based graphics 
+# for rails applications using a free and customizable chart's set.
 #
 # == Installation
 # Instructions are listed in the respository's README[http://github.com/jpemberthy/ezgraphix/tree/master/README.textile]  
