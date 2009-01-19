@@ -4,6 +4,10 @@ h3. Documentation
 
 "API Documentation (generated with RDoc)":http://ezgraphix.rubyforge.org
 
+h3. Demo
+
+"Online Demo (hosted by HerokuGarden)":http://ezgraphixdemo.herokugarden.com/
+
 h3. Installation Notes
 
 <b>Install the plugin:</b>
