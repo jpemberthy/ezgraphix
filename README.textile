@@ -16,7 +16,7 @@ h3. Installation Notes
 
 <b>Run the tasks:</b> (it will move the necessary files to use the plugin)
 
-<pre>rake ezgrahpix:setup    # run from your project's root </pre>
+<pre>rake ezgraphix:setup    # run from your project's root </pre>
 
 After the installation <b>include the FusionCharts.js</b> in each layout that will render ezgraphix:
 
@@ -25,8 +25,6 @@ After the installation <b>include the FusionCharts.js</b> in each layout that wi
 and that's it!.
 
 h3. Usage
-
-(this is the basic usage, I will create a blog entry with a more detailed information and an online demo.)
 
 <b> In your Controller: </b>
 
