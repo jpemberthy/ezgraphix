@@ -78,8 +78,4 @@ describe Graphic do
     get_style(@g).should == 'render_simple'
   end
   
-  it "should generate valid xml" do
-    @g.to_xml.should be_instance_of(String)
-  end
-  
 end
