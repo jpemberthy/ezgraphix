@@ -48,6 +48,8 @@ module EzgraphixHelper
     
     options.each{|k,v|
       case k 
+      when :animation
+        original_names['animation'] = v
       when :y_name
         original_names['yAxisName'] = v
       when :caption
