@@ -9,7 +9,7 @@
 # Instructions are listed in the respository's README[http://github.com/jpemberthy/ezgraphix/tree/master/README.textile]  
 #
 # == Online demo
-# Online demo[http://ezgraphixdemo.herokugarden.com/] Hosted by HerokuGarden!
+# Online demo[http://ezgraphixdemo.heroku.com/] Hosted by Heroku!
 #
 # == Contact
 #
