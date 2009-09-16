@@ -6,7 +6,7 @@ h3. Documentation
 
 h3. Demo
 
-"Online Demo (hosted by HerokuGarden)":http://ezgraphixdemo.herokugarden.com/
+"Online Demo (hosted by Heroku)":http://ezgraphixdemo.heroku.com/
 
 h3. Installation Notes
 
