@@ -94,6 +94,8 @@ module EzgraphixHelper
         original_names['SYAxisName'] = v
       when :x_name
         original_names['xAxisName'] = v
+      when :show_column_shadow
+        original_names['showColumnShadow'] = v
       end
       }
     original_names
