@@ -12,7 +12,7 @@ module EzgraphixHelper
     end
     style
   end
-  
+
   #method used in ActionView::Base to render graphics.
   def render_ezgraphix(g)
     style = get_style(g)
@@ -20,7 +20,7 @@ module EzgraphixHelper
     h = Hpricot("<div id='#{g.div_name}'></div>\n <script type='text/javascript'> var ezChart = new FusionCharts('#{f_type(g.c_type)}', '#{g.div_name}', '#{g.w}', '#{g.h}','0','0'); ezChart.setDataXML('#{g.to_xml}'); ezChart.render('#{g.div_name}');</script>")
     h.to_html
   end
-  
+
   def f_type(c_type)
     type = ''
     case c_type
@@ -40,14 +40,24 @@ module EzgraphixHelper
       type = '/FusionCharts/FCF_Line.swf'
     when 'doug2d'
       type = '/FusionCharts/FCF_Doughnut2D.swf'
+    when 'msline'
+      type = '/FusionCharts/FCF_MSLine.swf'
+    when 'mscol3d'
+      type = '/FusionCharts/FCF_MSColumn3D.swf'
+    when 'mscol2d'
+      type = '/FusionCharts/FCF_MSColumn2D.swf'
+    when 'msarea2d'
+      type = '/FusionCharts/FCF_MSArea2D.swf'
+    when 'msbar2d'
+      type = '/FusionCharts/FCF_MSBar2D.swf'
     end
   end
-      
+
   def parse_options(options)
     original_names = Hash.new
-    
+
     options.each{|k,v|
-      case k 
+      case k
       when :animation
         original_names['animation'] = v
       when :y_name
@@ -69,7 +79,7 @@ module EzgraphixHelper
       when :f_number_scale
         original_names['formatNumberScale'] = v
       when :rotate
-        original_names['rotateNames']  = v  
+        original_names['rotateNames']  = v
       when :background
         original_names['bgColor'] = v
       when :line
@@ -94,8 +104,10 @@ module EzgraphixHelper
         original_names['SYAxisName'] = v
       when :x_name
         original_names['xAxisName'] = v
+      when :show_column_shadow
+        original_names['showColumnShadow'] = v
       end
       }
     original_names
-  end    
+  end
 end

@@ -2,14 +2,14 @@
 # This file contains the Ezgraphix module, and the Ezgraphix::Graphic class.
 #
 # == Summary
-# A rails plugin to generate flash based graphics 
+# A rails plugin to generate flash based graphics
 # for rails applications using a free and customizable chart's set.
 #
 # == Installation
-# Instructions are listed in the respository's README[http://github.com/jpemberthy/ezgraphix/tree/master/README.textile]  
+# Instructions are listed in the respository's README[http://github.com/jpemberthy/ezgraphix/tree/master/README.textile]
 #
 # == Online demo
-# Online demo[http://ezgraphixdemo.herokugarden.com/] Hosted by HerokuGarden!
+# Online demo[http://ezgraphixdemo.heroku.com/] Hosted by Heroku!
 #
 # == Contact
 #
@@ -30,19 +30,19 @@ unless defined? Ezgraphix
    #
    # == Example
    # Define the Graphic in your controller.
-   #   @g = Ezgraphix::Graphic.new  # render_options can also be passed from here, 
+   #   @g = Ezgraphix::Graphic.new  # render_options can also be passed from here,
    #                                # @g = Ezgraphix::Graphic.new(:div_name => 'my_graph', :w => 400)
    #
    #   @g.defaults
    #   => {:c_type=>'col3d', :div_name=>'ez_graphic', :w=>300, :h=>300}
-   #   
+   #
    #   @g.render_options #equals to defaults if not options were passed to the initializer.
    #   => {:c_type=>'col3d', :div_name=>'ez_graphic', :w=>300, :h=>300}
    #
    # It's always a good idea to change the div_name if your planning to render more
    # than one Graphic in the same page, this makes the graphic unique.
    #   @g.render_options(:div_name => 'my_graph')
-   #   => {:c_type=>'col3d', :div_name=>'my_graph', :w=>300, :h=>300} 
+   #   => {:c_type=>'col3d', :div_name=>'my_graph', :w=>300, :h=>300}
    #
    # In order to render, you have to feed the graphic with data you want to show, Ezgraphix uses
    # a Hash to represent that data where the keys represents names, for example:
@@ -57,10 +57,13 @@ unless defined? Ezgraphix
    #
     class Graphic
       include EzgraphixHelper
-      
+
       #Hash containing the names and values to render.
       attr_accessor :data
-      
+
+      # Array containing the categories to render multi series charts
+      attr_accessor :labels
+
       # Hash containing all the render options. basic options are:
       # * <tt> :c_type</tt> -- Chart type to render.
       # * <tt> :div_name</tt> -- Name for the graphic, should be unique.
@@ -68,20 +71,20 @@ unless defined? Ezgraphix
       # * <tt> :h </tt> -- Height in pixels.
       # Full list of options are listed below render_options
       attr_accessor :render_options
-      
+
       COLORS = ['AFD8f6', '8E468E', '588526', 'B3A000', 'B2FF66',
                 'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
                 '66FF33', '000000', 'FFFF00', '669966', 'FF3300',
                 'F19CBB', '9966CC', '00FFFF', '4B5320', '007FFF',
                 '0000FF', '66FF00', 'CD7F32', '964B00', 'CC5500']
-                
+
       #Creates a new Graphic with the given _options_, if no _options_ are specified,
       #the new Graphic will be initalized with the Graphic#defaults options.
       def initialize(options={})
         @render_options = defaults.merge!(options)
         @data = Hash.new
       end
-      
+
       #Returns defaults render options.
       def defaults
         {:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'ez_graphic'}
@@ -110,8 +113,8 @@ unless defined? Ezgraphix
       # * <tt> :prefix</tt> -- Prefix to values defined in the _data_ attribute, default: nil, some prefix could be
       #   :prefix => "$" or :prefix => "€"
       # * <tt> :precision</tt> -- Number of decimal places to which all numbers on the chart would be rounded to, default: 2
-      # * <tt> :f_number</tt> -- Format number. if set to 0, numbers will not use separator, if set to 1 numbers will use separator 
-      # * <tt> :d_separator</tt> -- Decimal Separator, default: "." 
+      # * <tt> :f_number</tt> -- Format number. if set to 0, numbers will not use separator, if set to 1 numbers will use separator
+      # * <tt> :d_separator</tt> -- Decimal Separator, default: "."
       # * <tt> :t_separator</tt> -- Thousand Separator, default: ","
       # Design:
       # * <tt> :background</tt> -- Background Color
@@ -122,7 +125,7 @@ unless defined? Ezgraphix
       def render_options(options={})
         @render_options.merge!(options)
       end
-      
+
      #Returns the Graphic's type.
       def c_type
         self.render_options[:c_type]
@@ -134,7 +137,7 @@ unless defined? Ezgraphix
       end
 
       #Returns the Graphic's height.
-      def h  
+      def h
         self.render_options[:h]
       end
 
@@ -142,25 +145,43 @@ unless defined? Ezgraphix
       def div_name
         self.render_options[:div_name]
       end
-      
-      
-      #Returns a random color from the Graphic#COLORS collection.   
+
+
+      #Returns a random color from the Graphic#COLORS collection.
       def rand_color
         COLORS[rand(Graphic::COLORS.size - 1)]
       end
-      
+
       #Builds the xml to feed the chart.
       def to_xml
         options = parse_options(self.render_options)
         g_xml = Builder::XmlMarkup.new
-        escaped_xml = g_xml.graph(options) do
-          self.data.each{ |k,v|
-            g_xml.set :value => v, :name => k, :color => self.rand_color 
-          }
+        #For single series charts
+        unless ['msline', 'mscol2d', 'msbar2d', 'mscol3d', 'msarea2d'].include? self.c_type
+          escaped_xml = g_xml.graph(options) do
+            self.data.each{ |k,v|
+              g_xml.set :value => v, :name => k, :color => self.rand_color
+            }
+          end
+        else
+        #For multiseries charts
+          escaped_xml = g_xml.graph(options) do
+            g_xml.categories do
+              for label in self.labels
+                g_xml.category :name  => label
+              end
+            end
+            for d in self.data
+              g_xml.dataset(:color => self.rand_color, :seriesName => d.first ) do
+                d[1].each do |v|
+                g_xml.set :value => v
+                end
+              end
+            end
+          end
         end
         escaped_xml.to_xs
       end
-      
-  end  
+  end
  end
 end

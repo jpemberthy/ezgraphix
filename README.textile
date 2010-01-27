@@ -28,6 +28,8 @@ h3. Usage
 
 <b> In your Controller: </b>
 
+For single series charts:
+
 <pre>
 def index
   @g = Ezgraphix::Graphic.new
@@ -35,9 +37,21 @@ def index
 end
 </pre>
 
+For multiseries charts:
+
+In this case you have multiple values for each serie. Also you need to specify categories (labels). In the example below there are 2 series "Registrations" and "Payments" and values are divided into 7 months (labels) with a value for each serie/month.
+
+<pre>
+def index
+  @g = Ezgraphix::Graphic.new
+  @g.data = { "Registrations" => [4,2,12,7,0,3,6], "Payments" => [7,3,5,2,1,0,9] }
+  @g.labels = ["March", "April", "May", "June", "July", "August", "September"]
+end
+</pre>
+
 There are 2 ways to <b> pass render options: </b>
 
-<b>1.</b> When the Graphic object is created, you can define it also as: 
+<b>1.</b> When the Graphic object is created, you can define it also as:
 
 <pre>@g = Ezgraphix::Graphic.new(:w => 200, :h => 300, :c_type => 'bar3d', :div_name => 'my_chart_tag_name')</pre>
 
@@ -52,6 +66,11 @@ Pie 2D	  => :c_type => 'pie2d'
 Pie 3D	  => :c_type => 'pie3d'
 Line	  => :c_type => 'line'
 Doughnut 2D  => :c_type => 'doug2d'
+MultiSeriesLine => :ctype => 'msline'
+MultiSeriesColumn3D => :ctype => 'mscol3d'
+MultiSeriesColumn2D => :ctype => 'mscol2d'
+MultiSeriesArea2D => :ctype => 'msarea2d'
+MultiSeriesBar2D => :ctype => 'msbar2d'
 </pre>
 
 <b>2.</b> Anytime you want, by accessing the render_options attribute.
