@@ -16,9 +16,17 @@ module EzgraphixHelper
   #method used in ActionView::Base to render graphics.
   def render_ezgraphix(g)
     style = get_style(g)
-    xml_data = g.to_xml
-    h = Hpricot("<div id='#{g.div_name}'></div>\n <script type='text/javascript'> var ezChart = new FusionCharts('#{f_type(g.c_type)}', '#{g.div_name}', '#{g.w}', '#{g.h}','0','0'); ezChart.setDataXML('#{g.to_xml}'); ezChart.render('#{g.div_name}');</script>")
-    h.to_html
+    result = ""
+    html = Builder::XmlMarkup.new(:target => result)
+    html.div("test", :id => g.div_name)
+    html = Builder::XmlMarkup.new(:target => result)
+    html.script(:type => 'text/javascript') do
+      html << "var ezChart = new FusionCharts('#{f_type(g.c_type)}','#{g.div_name}','#{g.w}','#{g.h}','0','0');\n"
+      html << "ezChart.setDataXML(\"#{g.to_xml}\");\n" unless g.data.is_a?(String)
+      html << "ezChart.setDataURL(\"#{g.data}\");\n" if g.data.is_a?(String)
+      html << "ezChart.render(\"#{g.div_name}\");\n"
+    end
+    result
   end
 
   def f_type(c_type)

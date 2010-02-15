@@ -82,7 +82,7 @@ unless defined? Ezgraphix
       #the new Graphic will be initalized with the Graphic#defaults options.
       def initialize(options={})
         @render_options = defaults.merge!(options)
-        @data = Hash.new
+        @data = options[:data] || Hash.new
       end
 
       #Returns defaults render options.
@@ -180,7 +180,11 @@ unless defined? Ezgraphix
             end
           end
         end
-        escaped_xml.to_xs
+        escaped_xml.gsub("\"", "'")
+      end
+      
+      def to_s
+        render_ezgraphix self
       end
   end
  end

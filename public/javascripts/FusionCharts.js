@@ -1,6 +1,12 @@
 /**
  * FusionCharts: Flash Player detection and Chart embedding.
- * Version:  vFree.1.2 (1st November, 2007) - Added Player detection, New conditional fixes for IE, supports FORM in IE
+ * Version 1.2.3F ( 22 November 2008) - Specialized for FusionChartsFREE 
+ * 					Checking Flash Version >=6 and added updateChartXML() for FREE Charts.
+ * Version: 1.2.3 (1st September, 2008) - Added Fix for % and & characters, scaled dimensions, fixes in to properly handling of double quotes and single quotes in setDataXML() function.
+ * Version: 1.2.2 (10th July, 2008) - Added Fix for % scaled dimensions, fixes in setDataXML() and setDataURL() functions
+ * Version: 1.2.1 (21st December, 2007) - Added setting up Transparent/opaque mode: setTransparent() function 
+ * Version: 1.2 (1st November, 2007) - Added FORM fixes for IE 
+ * Version: 1.1 (29th June, 2007) - Added Player detection, New conditional fixes for IE
  *
  * Morphed from SWFObject (http://blog.deconcept.com/swfobject/) under MIT License:
  * http://www.opensource.org/licenses/mit-license.php
@@ -22,8 +28,12 @@ infosoftglobal.FusionCharts = function(swf, id, w, h, debugMode, registerWithJS,
 	//Set attributes for the SWF
 	if(swf) { this.setAttribute('swf', swf); }
 	if(id) { this.setAttribute('id', id); }
+
+	w=w.toString().replace(/\%$/,"%25");
 	if(w) { this.setAttribute('width', w); }
+	h=h.toString().replace(/\%$/,"%25");
 	if(h) { this.setAttribute('height', h); }
+
 	
 	//Set background color
 	if(c) { this.addParam('bgcolor', c); }
@@ -50,6 +60,7 @@ infosoftglobal.FusionCharts = function(swf, id, w, h, debugMode, registerWithJS,
 	//Scale Mode of chart
 	scaleMode = scaleMode ? scaleMode : 'noScale';
 	this.addVariable('scaleMode', scaleMode);
+	
 	//Application Message Language
 	lang = lang ? lang : 'EN';
 	this.addVariable('lang', lang);
@@ -133,14 +144,47 @@ infosoftglobal.FusionCharts.prototype = {
 			//Else, we update the chart data using External Interface
 			//Get reference to chart object
 			var chartObj = infosoftglobal.FusionChartsUtil.getChartObject(this.getAttribute('id'));
+			
+			if (!chartObj.setDataURL)
+			{
+				__flash__addCallback(chartObj, "setDataURL");
+			}
+			
 			chartObj.setDataURL(strDataURL);
 		}
+	},
+	//This function :
+	//fixes the double quoted attributes to single quotes
+	//Encodes all quotes inside attribute values
+	//Encodes % to %25 and & to %26;
+	encodeDataXML: function(strDataXML){
+		
+			var regExpReservedCharacters=["\\$","\\+"];
+			var arrDQAtt=strDataXML.match(/=\s*\".*?\"/g);
+			if (arrDQAtt){
+				for(var i=0;i<arrDQAtt.length;i++){
+					var repStr=arrDQAtt[i].replace(/^=\s*\"|\"$/g,"");
+					repStr=repStr.replace(/\'/g,"%26apos;");
+					var strTo=strDataXML.indexOf(arrDQAtt[i]);
+					var repStrr="='"+repStr+"'";
+					var strStart=strDataXML.substring(0,strTo);
+					var strEnd=strDataXML.substring(strTo+arrDQAtt[i].length);
+					var strDataXML=strStart+repStrr+strEnd;
+				}
+			}
+			
+			strDataXML=strDataXML.replace(/\"/g,"%26quot;");
+			strDataXML=strDataXML.replace(/%(?![\da-f]{2}|[\da-f]{4})/ig,"%25");
+			strDataXML=strDataXML.replace(/\&/g,"%26");
+
+			return strDataXML;
+
 	},
 	setDataXML: function(strDataXML){
 		//If being set initially
 		if (this.initialDataSet==false){
 			//This method sets the data XML for the chart INITIALLY.
-			this.addVariable('dataXML',strDataXML);
+			this.addVariable('dataXML',this.encodeDataXML(strDataXML));
 			//Update flag
 			this.initialDataSet = true;
 		}else{
@@ -150,6 +194,19 @@ infosoftglobal.FusionCharts.prototype = {
 			chartObj.setDataXML(strDataXML);
 		}
 	},
+	setTransparent: function(isTransparent){
+		//Sets chart to transparent mode when isTransparent is true (default)
+		//When no parameter is passed, we assume transparent to be true.
+		if(typeof isTransparent=="undefined") {
+			isTransparent=true;
+		}			
+		//Set the property
+		if(isTransparent)
+			this.addParam('WMode', 'transparent');
+		else
+			this.addParam('WMode', 'Opaque');
+	},
+	
 	render: function(elementId){
 		//First check for installed version of Flash Player - we need a minimum of 6
 		if((this.detectFlashVersion==1) && (this.installedVer.major < 6)){
@@ -164,7 +221,7 @@ infosoftglobal.FusionCharts.prototype = {
 			}else{
 				//Else, do not take an action. It means the developer has specified a message in the DIV (and probably a link).
 				//So, expect the developers to provide a course of way to their end users.
-				//window.alert("You need Adobe Flash Player 6 (or above) to view the charts. It is a free and lightweight installation from Adobe.com. ");
+				//window.alert("You need Adobe Flash Player 8 (or above) to view the charts. It is a free and lightweight installation from Adobe.com. ");
 				return false;
 			}			
 		}else{
@@ -172,11 +229,11 @@ infosoftglobal.FusionCharts.prototype = {
 			var n = (typeof elementId == 'string') ? document.getElementById(elementId) : elementId;
 			n.innerHTML = this.getSWFHTML();
 			
-			//Added for .NET AJAX and <FORM> compatibility
+			//Added <FORM> compatibility
+			//Check if it's added in Mozilla embed array or if already exits 
 			if(!document.embeds[this.getAttribute('id')] && !window[this.getAttribute('id')])
 		      	window[this.getAttribute('id')]=document.getElementById(this.getAttribute('id')); 
-			 //or else document.forms[formName/formIndex][chartId]
-			
+				//or else document.forms[formName/formIndex][chartId]			
 			return true;		
 		}
 	}
@@ -266,10 +323,6 @@ if (Array.prototype.push == null) { Array.prototype.push = function(item) { this
 /* Function to return Flash Object from ID */
 infosoftglobal.FusionChartsUtil.getChartObject = function(id)
 {
-  //	set off to test in  .NET AJAX and <FORM> environment
-  //if (window.document[id]) {
-  //    return window.document[id];
-  //}
   var chartRef=null;
   if (navigator.appName.indexOf("Microsoft Internet")==-1) {
     if (document.embeds && document.embeds[id])
@@ -285,8 +338,6 @@ infosoftglobal.FusionChartsUtil.getChartObject = function(id)
   
   return chartRef;
 }
-
-
 /*
  Function to update chart's data at client side (FOR FusionCharts vFREE and 2.x
 */
