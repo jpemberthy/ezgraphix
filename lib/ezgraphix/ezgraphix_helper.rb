@@ -32,6 +32,8 @@ module EzgraphixHelper
   def f_type(c_type)
     type = ''
     case c_type
+    when 'area2d'
+      type = '/FusionCharts/FCF_Area2D.swf'
     when 'col3d'
       type = '/FusionCharts/FCF_Column3D.swf'
     when 'bar2d'

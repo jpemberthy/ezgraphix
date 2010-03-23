@@ -157,7 +157,14 @@ unless defined? Ezgraphix
         options = parse_options(self.render_options)
         g_xml = Builder::XmlMarkup.new
         #For single series charts
-        unless ['msline', 'mscol2d', 'msbar2d', 'mscol3d', 'msarea2d'].include? self.c_type
+        if ["area2d"].include? self.c_type
+          # These graphics should be one color only
+          escaped_xml = g_xml.graph(options) do
+            self.data.each{ |k,v|
+              g_xml.set :value => v, :name => k
+            }
+          end
+        elsif !['msline', 'mscol2d', 'msbar2d', 'mscol3d'].include?(self.c_type)
           escaped_xml = g_xml.graph(options) do
             self.data.each{ |k,v|
               g_xml.set :value => v, :name => k, :color => self.rand_color
