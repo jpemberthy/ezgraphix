@@ -64,14 +64,21 @@ There are 2 ways to <b> pass render options: </b>
 The defaults are: <pre>{:c_type => 'col3d', :w => 300, :h => 300, :div_name => 'ez_graphic'}</pre>
 At the moment, you can render the following graphics:
 
+<b> Single Series </b>
+
 <pre>
-Column 2D 				=> :c_type => 'col2d'
-Column 3D 				=> :c_type => 'col3d'
-Bar 2D    				=> :c_type => 'bar2d'
-Pie 2D	  				=> :c_type => 'pie2d'
-Pie 3D	  				=> :c_type => 'pie3d'
-Line	  				=> :c_type => 'line'
-Doughnut 2D				=> :c_type => 'doug2d'
+Column 2D	=> :c_type => 'col2d'
+Column 3D	=> :c_type => 'col3d'
+Bar 2D		=> :c_type => 'bar2d'
+Pie 2D		=> :c_type => 'pie2d'
+Pie 3D		=> :c_type => 'pie3d'
+Line		=> :c_type => 'line'
+Doughnut 2D	=> :c_type => 'doug2d'
+</pre>
+
+<b> Multi Series </b>
+
+<pre>
 MultiSeriesLine			=> :ctype => 'msline'
 MultiSeriesColumn3D		=> :ctype => 'mscol3d'
 MultiSeriesColumn2D		=> :ctype => 'mscol2d'
