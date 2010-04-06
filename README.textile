@@ -71,12 +71,12 @@ Bar 2D    				=> :c_type => 'bar2d'
 Pie 2D	  				=> :c_type => 'pie2d'
 Pie 3D	  				=> :c_type => 'pie3d'
 Line	  				=> :c_type => 'line'
-Doughnut 2D  			=> :c_type => 'doug2d'
-MultiSeriesLine 		=> :ctype => 'msline'
-MultiSeriesColumn3D 	=> :ctype => 'mscol3d'
-MultiSeriesColumn2D 	=> :ctype => 'mscol2d'
-MultiSeriesArea2D 		=> :ctype => 'msarea2d'
-MultiSeriesBar2D 		=> :ctype => 'msbar2d'
+Doughnut 2D				=> :c_type => 'doug2d'
+MultiSeriesLine			=> :ctype => 'msline'
+MultiSeriesColumn3D		=> :ctype => 'mscol3d'
+MultiSeriesColumn2D		=> :ctype => 'mscol2d'
+MultiSeriesArea2D		=> :ctype => 'msarea2d'
+MultiSeriesBar2D		=> :ctype => 'msbar2d'
 </pre>
 
 <b>2.</b> Anytime you want, by accessing the render_options attribute.
