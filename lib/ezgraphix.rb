@@ -73,7 +73,7 @@ unless defined? Ezgraphix
       attr_accessor :render_options
 
       COLORS = ['AFD8f6', '8E468E', '588526', 'B3A000', 'B2FF66',
-                'F984A1', 'A66EDD', 'B2FF66', '3300CC', '000033',
+                'F984A1', 'A66EDD', 'B20000', '3300CC', '000033',
                 '66FF33', '000000', 'FFFF00', '669966', 'FF3300',
                 'F19CBB', '9966CC', '00FFFF', '4B5320', '007FFF',
                 '0000FF', '66FF00', 'CD7F32', '964B00', 'CC5500']
@@ -149,7 +149,8 @@ unless defined? Ezgraphix
 
       #Returns a random color from the Graphic#COLORS collection.
       def rand_color
-        COLORS[rand(Graphic::COLORS.size - 1)]
+        @available_colors = COLORS.clone if @available_colors.to_a.empty?
+        @available_colors.delete_at rand(@available_colors.count)
       end
 
       #Builds the xml to feed the chart.

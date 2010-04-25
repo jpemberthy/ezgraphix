@@ -49,6 +49,10 @@ describe Graphic do
     @g.rand_color.length.should == 6
   end
   
+  specify "colors should not repeat" do
+    Graphic::COLORS.inject([]){|used, color| used << @g.rand_color}.uniq.count.should == Graphic::COLORS.count
+  end
+  
   before do
     @g.data = {:ruby => 1, :perl => 2, :smalltalk => 3}
   end
