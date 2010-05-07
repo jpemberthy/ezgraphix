@@ -1,6 +1,4 @@
 module EzgraphixHelper
-  require 'hpricot'
-
   def get_style(g)
     case g.c_type
     when 'col3d'
