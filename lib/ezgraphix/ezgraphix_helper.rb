@@ -1,19 +1,6 @@
 module EzgraphixHelper
-  def get_style(g)
-    case g.c_type
-    when 'col3d'
-      style = 'render_simple'
-    when 'bar2d'
-      style = 'render_simple'
-    when 'col2d'
-      style = 'render_simple'
-    end
-    style
-  end
-
   #method used in ActionView::Base to render graphics.
   def render_ezgraphix(g)
-    style = get_style(g)
     result = ""
     html = Builder::XmlMarkup.new(:target => result)
     html.div("test", :id => g.div_name)
