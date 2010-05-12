@@ -37,6 +37,15 @@ def index
 end
 </pre>
 
+or you can specify the data directly in the constructor:
+
+<pre>
+def index
+  @g = Ezgraphix::Graphic.new(:data => {:ruby => 1, :perl => 2, :smalltalk => 3})
+end
+</pre>
+
+
 For multiseries charts:
 
 In this case you have multiple values for each serie. Also you need to specify categories (labels). In the example below there are 2 series "Registrations" and "Payments" and values are divided into 7 months (labels) with a value for each serie/month.
@@ -96,7 +105,7 @@ Add the following line wherever you want to render the graphic.
 
 <pre><%= render_ezgraphix @g %></pre>
 
-Optionally, you can just call the ezgraphix instance in the view.
+or just
 
 <pre><%= @g %></pre>
 
