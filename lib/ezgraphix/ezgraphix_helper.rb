@@ -15,7 +15,6 @@ module EzgraphixHelper
   end
 
   def f_type(c_type)
-    type =\ 
     case c_type
     when 'area2d'
       '/FusionCharts/FCF_Area2D.swf'
