@@ -150,7 +150,7 @@ unless defined? Ezgraphix
       #Returns a random color from the Graphic#COLORS collection.
       def rand_color
         @available_colors = COLORS.clone if @available_colors.to_a.empty?
-        @available_colors.delete_at rand(@available_colors.count)
+        @available_colors.delete_at rand(@available_colors.size)
       end
 
       #Builds the xml to feed the chart.
