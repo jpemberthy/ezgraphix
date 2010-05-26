@@ -59,7 +59,7 @@ module EzgraphixHelper
       when :caption
         original_names['caption'] = v
       when :subcaption
-        original_names['subCaptions'] = v
+        original_names['subCaption'] = v
       when :prefix
         original_names['numberPrefix'] = v
       when :precision
