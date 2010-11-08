@@ -58,12 +58,6 @@ def index
 end
 </pre>
 
-You can also pass the data collection to the constructor:
-
-<pre>
-  @g = Ezgraphix::Graphic.new(:data => {:ruby => 1, :perl => 2, :smalltalk => 3})
-</pre>
-
 There are 2 ways to <b> pass render options: </b>
 
 <b>1.</b> When the Graphic object is created, you can define it also as:
